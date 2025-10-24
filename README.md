@@ -271,9 +271,13 @@ Throughout the project, several issues were encountered and resolved to ensure a
 
 #### 5. Client IP Conflict
 - **Issue**: DHCP-assigned IP caused inconsistent connectivity
-- **Fix**: Manually assigned static IP `10.0.2.15` to the client for lab simplicity
+- **Fix**: Manually assigned static IP 10.0.2.20
 - **Result**: Stable connectivity and successful domain join
  
- 
+ ![DNS Fix](Screenshots/DNS_Fix.png)
+![Static IP](Screenshots/Static_IP.png)
+![GPO Conflict](Screenshots/GPO_Conflict.png)
+
+
 
 
