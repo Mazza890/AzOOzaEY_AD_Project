@@ -20,6 +20,11 @@ This project demonstrates the setup of a secure and scalable Active Directory (A
 
 • 	PingCastle (AD security audit)
 
+![VirtualBox Setup](Screenshots/VirtualBox_Setup.png)
+![VM List](Screenshots/VM_List.png)
+
+
+
  ### Configuration
 • 	Internal Network setup in VirtualBox
 
@@ -33,7 +38,13 @@ This project demonstrates the setup of a secure and scalable Active Directory (A
 
 • 	Verified connectivity using  Ping  and  nslookup
 
+### 🛠️ Domain Promotion
 
+- Installed AD DS role
+- Promoted server to Domain Controller
+- Domain name: `mazza.local`
+
+![Domain Promotion](Screenshots/Domain_Promotion.png)
 
 ## 📌 Why Promote to Domain Controller
 
@@ -73,6 +84,8 @@ Promoting the server to a Domain Controller transforms it from a basic server in
 | Computers   | Client machines        | Africa > Computers            |
 | Servers     | Infrastructure roles   | Africa > Servers              |
 
+![OU Structure](Screenshots/OU_Structure.png)
+
 #### Example OU Paths
 - Africa > Users  
 - Africa > Computers  
@@ -97,6 +110,9 @@ Promoting the server to a Domain Controller transforms it from a basic server in
   - USA > Users
   - Asia > Users
   - Australia > Users
+![User Creation](Screenshots/User_Creation.png)
+![Group Creation](Screenshots/Group_Creation.png)
+
 
 #### Group Creation
 
@@ -140,6 +156,10 @@ Group Policy Objects (GPOs) were created and linked to each top-level OU (Africa
  🔁 All GPOs were tested using `gpupdate /force` and verified on Windows 11 Pro domain clients.  
  🧩 Same GPO structure applied to each top-level OU for consistency.
 
+ ![GPO Editor](Screenshots/GPO_Editor.png)
+![Drive Mapping GPO](Screenshots/Drive_Mapping_GPO.png)
+
+
  ### 🧪 GPO Testing
 
 After creating and linking Group Policy Objects (GPOs), policies were tested to ensure they applied correctly across all regional OUs.
@@ -152,7 +172,10 @@ After creating and linking Group Policy Objects (GPOs), policies were tested to 
   - USB storage disabled
   - Desktop wallpaper applied (black screen issue pending)
 
----
+![GPO Update](Screenshots/GPO_Update.png)
+![Mapped Drive](Screenshots/Mapped_Drive.png)
+![Control Panel Blocked](Screenshots/ControlPanel_Blocked.png)
+
 
 ### 📁 File Sharing and Permissions
 
@@ -162,6 +185,10 @@ After creating and linking Group Policy Objects (GPOs), policies were tested to 
   - `Domain Users` → Read
 - **NTFS Permissions**:
   - Assigned Modify or Read access to specific users and groups
+  - 
+![Shared Folder](Screenshots/SharedEY_Properties.png)
+![NTFS Permissions](Screenshots/NTFS_Permissions.png)
+
 
 #### Sharing Methods
 
@@ -207,6 +234,16 @@ PingCastle was used to perform a security health check of the AzOOzaEY Active Di
 - Assess AD security posture
 - Identify misconfigurations or vulnerabilities
 - Support future hardening and compliance efforts
+- 
+![PingCastle Scan](Screenshots/PingCastle_Scan.png)
+
+
+#### Report Access
+The full PingCastle report is available in the repository as:
+
+📄 [`ad_hc_mazza.local`](ad_hc_mazza.local)
+
+> This file contains the complete health check results, including risk scores, domain configuration analysis, and recommended security improvements.
 
 
  ### 🧯 Troubleshooting & Fixes
