@@ -100,7 +100,7 @@ Promoting the server to a Domain Controller transforms it from a basic server in
 - Australia > Computers  
 - Australia > Servers
 
-### 👥 User and Group Management
+###  User and Group Management
 
 #### User Creation
 - Created users for each department and region (e.g., `Mohammed Hamedo`, `jdonor`, `fteam1`)
