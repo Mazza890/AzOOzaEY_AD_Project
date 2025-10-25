@@ -2,7 +2,7 @@
 # by Mazza Bushara
 Foundational Active Directory setup and security hardening in a virtual lab using Windows Server 2022
 
-## ** Project Objective**
+##  Project Objective
 
 This project demonstrates the setup of a secure and scalable Active Directory (AD) infrastructure for a fictional enterprise, AzOOzaEY, using Windows Server 2022 and Windows 11 Pro in a virtual lab. It is designed to help IT students and junior administrators understand the foundational steps of domain creation, OU design, user/group management, GPO deployment, file sharing, and security auditing.
 
@@ -38,7 +38,7 @@ This project demonstrates the setup of a secure and scalable Active Directory (A
 
 • 	Verified connectivity using  Ping  and  nslookup
 
-### 🛠️ Domain Promotion
+###  Domain Promotion
 
 - Installed AD DS role
 - Promoted server to Domain Controller
