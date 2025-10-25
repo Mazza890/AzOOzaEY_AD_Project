@@ -2,11 +2,11 @@
 # by Mazza Bushara
 Foundational Active Directory setup and security hardening in a virtual lab using Windows Server 2022
 
-## **📌 Project Objective**
+## ** Project Objective**
 
 This project demonstrates the setup of a secure and scalable Active Directory (AD) infrastructure for a fictional enterprise, AzOOzaEY, using Windows Server 2022 and Windows 11 Pro in a virtual lab. It is designed to help IT students and junior administrators understand the foundational steps of domain creation, OU design, user/group management, GPO deployment, file sharing, and security auditing.
 
-##  🛠️ Lab Environment
+##   Lab Environment
 ### Tools Used
 • 	Oracle VirtualBox (virtualization)
 
@@ -46,11 +46,11 @@ This project demonstrates the setup of a secure and scalable Active Directory (A
 
 ![Domain Promotion](Screenshots/Domain_Promotion.png)
 
-## 📌 Why Promote to Domain Controller
+##  Why Promote to Domain Controller
 
 Promoting the server to a Domain Controller transforms it from a basic server into the central authority for identity management within your network. This is the foundation of Active Directory.
 
-✅ **Key Benefits**
+ **Key Benefits**
 - **Authentication & Authorization**: Manages logins and access to resources across the domain.
 - **Group Policy Management**: Enforces security settings and user configurations.
 - **Directory Services**: Organizes users, computers, and groups in a scalable structure.
@@ -66,7 +66,7 @@ Promoting the server to a Domain Controller transforms it from a basic server in
 | No domain join       | Clients can join the domain         |
 
 
-  ### 🧱 OU Structure for AzOOzaEY
+  ###  OU Structure for AzOOzaEY
 
 #### Top-Level OUs
 - Africa
@@ -74,7 +74,7 @@ Promoting the server to a Domain Controller transforms it from a basic server in
 - Asia
 - Australia
 
-> 🧩 Each top-level OU follows the same internal structure for consistency and scalability.
+>  Each top-level OU follows the same internal structure for consistency and scalability.
 
 #### Sub-OUs for Each Region
 
@@ -124,20 +124,20 @@ Promoting the server to a Domain Controller transforms it from a basic server in
 | Finance        | Global  | Security     | Asia > Users         | Permissions for finance-related resources    |
 | DL-FinanceTeam | Global  | Distribution | Asia > Users         | Email list for finance team                  |
 
-> 🔐 Security groups were used for access control.  
-> 📧 Distribution groups were used for email communication.
+>  Security groups were used for access control.  
+>  Distribution groups were used for email communication.
 
 Group Scope & Type Summary
 - Global: Used across the domain
 - Security: Grants access rights
 - Distribution: Used for email lists
 
-🖥️ Computer Management
+ Computer Management
 - Joined Windows 11 Pro client to mazza.local
 - Moved client object to appropriate OU (e.g., Africa > Computers)
 - Verified domain login using domain user credentials
 
-### 🛡️ Group Policy Objects (GPOs)
+###  Group Policy Objects (GPOs)
 
 Group Policy Objects (GPOs) were created and linked to each top-level OU (Africa, USA, Asia, Australia) to enforce consistent security and user experience across the domain.
 
@@ -153,14 +153,14 @@ Group Policy Objects (GPOs) were created and linked to each top-level OU (Africa
 | Account Lockout Policy    | Computer Policy     | Computers OU     | Lock account after 5 failed login attempts (10-min lockout)| Brute-force protection           |
 | Logon Message             | Computer Policy     | Computers OU     | Display legal notice at login                              | Optional compliance feature      |
 
- 🔁 All GPOs were tested using `gpupdate /force` and verified on Windows 11 Pro domain clients.  
- 🧩 Same GPO structure applied to each top-level OU for consistency.
+ All GPOs were tested using `gpupdate /force` and verified on Windows 11 Pro domain clients.  
+  Same GPO structure applied to each top-level OU for consistency.
 
  ![GPO Editor](Screenshots/GPO_Editor.png)
 ![Drive Mapping GPO](Screenshots/Drive_Mapping_GPO.png)
 
 
- ### 🧪 GPO Testing
+ ###  GPO Testing
 
 After creating and linking Group Policy Objects (GPOs), policies were tested to ensure they applied correctly across all regional OUs.
 
@@ -177,7 +177,7 @@ After creating and linking Group Policy Objects (GPOs), policies were tested to 
 ![Control Panel Blocked](Screenshots/ControlPanel_Blocked.png)
 
 
-### 📁 File Sharing and Permissions
+### File Sharing and Permissions
 
 #### Shared Folder Setup
 - Created `C:\SharedEY` on the Domain Controller
@@ -197,12 +197,12 @@ After creating and linking Group Policy Objects (GPOs), policies were tested to 
 | Manual Mapping   | M:           | Temporary mapping via File Explorer              |
 | GPO Drive Mapping| M:           | Persistent mapping applied through Group Policy  |
 
-🔐 NTFS permissions control actual file access  
-🔄 Share permissions control visibility over the network  
-🧩 GPO-based mapping ensures consistency across all domain users
+ NTFS permissions control actual file access  
+ Share permissions control visibility over the network  
+ GPO-based mapping ensures consistency across all domain users
 
 
-### 📊 File Server Resource Manager (FSRM)
+###  File Server Resource Manager (FSRM)
 
 FSRM was configured to manage storage usage and enforce file screening policies on the shared folder `C:\SharedEY`.
 
@@ -220,7 +220,7 @@ FSRM was configured to manage storage usage and enforce file screening policies 
 - Reduce hardware costs by managing space efficiently
 
 
-### 🧪 PingCastle Security Audit
+###  PingCastle Security Audit
 
 PingCastle was used to perform a security health check of the AzOOzaEY Active Directory domain.
 
@@ -241,12 +241,12 @@ PingCastle was used to perform a security health check of the AzOOzaEY Active Di
 #### Report Access
 The full PingCastle report is available in the repository as:
 
-📄 [`ad_hc_mazza.local`](ad_hc_mazza.local)
+ [`ad_hc_mazza.local`](ad_hc_mazza.local)
 
 > This file contains the complete health check results, including risk scores, domain configuration analysis, and recommended security improvements.
 
 
- ### 🧯 Troubleshooting & Fixes
+ ###  Troubleshooting & Fixes
 
 Throughout the project, several issues were encountered and resolved to ensure a stable and functional Active Directory environment.
 
