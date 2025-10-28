@@ -137,6 +137,31 @@ Group Scope & Type Summary
 - Moved client object to appropriate OU (e.g., Africa > Computers)
 - Verified domain login using domain user credentials
 
+DHCP and Network Layout – mazza.local Lab
+Overview
+This document outlines how DHCP, DNS, and static IPs are configured in the virtual lab for the mazza.local domain.
+IP Plan
+The router uses IP address 10.0.2.1 and serves as the default gateway.
+The DNS server is located at 10.0.2.15 and also functions as the domain controller.
+The DHCP scope assigns dynamic IPs from 10.0.2.100 to 10.0.2.200.
+Static IPs are reserved outside this range to avoid conflicts.
+The HP LaserJet 6MP printer is reserved at 10.0.2.80 using its MAC address f20000ada4d5.
+DHCP Scope Options
+Option 003 (Router): 10.0.2.1
+Option 006 (DNS Server): 10.0.2.15
+Option 015 (DNS Domain Name): mazza.local
+These options ensure that clients receive the correct gateway, DNS server, and domain suffix when they obtain an IP address.
+DHCP Reservation
+A reservation was created for the HP LaserJet 6MP printer.
+Reservation name: HPLaserJet_6MP
+IP address: 10.0.2.80
+MAC address: f20000ada4d5
+This ensures the printer always receives the same IP address from DHCP.
+Notes
+Static infrastructure devices like the router and DNS server are assigned IPs outside the DHCP scope.
+The DHCP scope is only used for domain-joined clients and other dynamic devices.
+Reservations help maintain consistent IPs for devices that need reliable access, such as printers or servers.
+
 ###  Group Policy Objects (GPOs)
 
 Group Policy Objects (GPOs) were created and linked to each top-level OU (Africa, USA, Asia, Australia) to enforce consistent security and user experience across the domain.
