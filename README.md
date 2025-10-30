@@ -306,8 +306,30 @@ Throughout the project, several issues were encountered and resolved to ensure a
  
  ![DNS Fix](Screenshots/DNS_Fix.png)
 ![Static IP](Screenshots/Static_IP.png)
-![GPO Conflict](Screenshots/GPO_Conflict.png)
+
+## DHCP configuration 
+I installed and configured the DHCP Server role on Windows Server to support dynamic IP address assignment in the AzOOzaEY lab. The server was authorized in Active Directory, and a new IPv4 scope was created with the following configuration:
+• 	IP range: 10.0.2.100  to  10.0.2.200
+• 	Default gateway: 10.0.2.1
+• 	DNS server: 10.0.2.15
+• 	Excluded range:  10.0.2.150 to 10.0.2.160
+To ensure consistent IP assignment for key devices, I added a reservation named HPLaserJet_6MP with the IP address 10.0.2.80  and f20000ada4d5 MAC address. This ensures that the printer always receives the same IP address from the DHCP server.
+This DHCP configuration integrates with DNS and Group Policy services already deployed in the lab, supporting reliable connectivity for domain-joined clients and enhancing overall network management.
+
+## Roaming User Profiles Deployment 
+
+### Roaming User Profiles (Africa > Users OU)
+
+- Created a dedicated file share: \\MB-Project260\Roaming_profiles$
+- Applied GPO: Roaming User Profile Settings to Africa/Users OU
+- Profile path: \\MB-Project260\Roaming_Profiles$\%username%
+- Verified roaming status on Windows 11 Pro client (Client800-869) via Control Panel > System > User Profiles
 
 
+This roaming profile deployment builds on the foundational Active Directory structure already implemented in the AzOOzaEY lab. The Africa  OU contains a  Users sub-OU, where roaming profiles were configured for selected domain users. A dedicated file share named Roaming_Profiles$ was created on MB-Project260 with explicit permissions to support secure profile storage. This share is isolated from redirected folders to prevent caching conflicts and ensure profile integrity.
 
+To enforce roaming behavior, I created a Group Policy Object titled "Roaming User Profile Settings" and linked it to the "Africa/Users" OU. The GPO specifies the roaming path using the  %username%  variable, allowing each user’s profile to be stored in a unique subfolder within the share. Inheritance was disabled on the share, and permissions were customized to meet best practices for roaming profile access.
+
+Testing was performed on a Windows 11 Pro client (Client800-869) joined to the domain. After signing in with a configured user account and running gpupdate/force, I verified that the profile type was listed as " Roaming "under Control Panel > System > User Profiles. This confirms that the GPO and file share integration are functioning as expected.
+This feature enhances centralized management and supports user mobility across domain-joined devices. It complements other Group Policy configurations already documented in the project, such as folder redirection and security hardening. Future updates may include quota enforcement, FSRM integration, or primary computer targeting for roaming profiles.
 
